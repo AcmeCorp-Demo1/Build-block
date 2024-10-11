@@ -1,0 +1,27 @@
+version: '3.0'
+services:
+  test-website:
+    build:
+      context: .
+    container_name: test-container
+    ports:
+      - "7000:9000"
+    restart: always
+    environment:
+      - NEXT_PUBLIC_ENV=${NEXT_PUBLIC_ENV}
+      - NEXT_PUBLIC_GID=${NEXT_PUBLIC_GID}
+      - NEXT_PUBLIC_GTM=${NEXT_PUBLIC_GTM}
+
+  nginx:
+    image: nginx:latest
+    container_name: nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    restart: always
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+      - /home/ubuntu/certs:/etc/nginx/certs
+    depends_on:
+      - test-continer
+ 
