@@ -41,4 +41,4 @@ jobs:
           -e WORKSPACE_PATH="/src" \
           -e LOG_LEVEL="debug" \
           -e EXIT_ON_ERROR=true \
-          -v "${{ github.workspace }}":/src --entrypoint /bin/sh "${{env.docker_tag}}" -c "duckdefender sast --scan"
+          -v "${{ github.workspace }}":/src --entrypoint /bin/sh "${{env.docker_tag}}" -c "duckdefender scan --all"
