@@ -1,3 +1,12 @@
-fail-build-on:
-    sast:
-        - low
+secrets:
+    files:
+        - src/app/app.preperties
+        - src/components/broker.js
+    types:
+        - GITHUB_PAT
+        - CIRCLECI_AT
+
+sast:
+    files:
+        - src/app/app.preperties
+        - src/components/broker.js
